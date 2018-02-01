@@ -1,6 +1,6 @@
 package com.khalilayache.newspapper.contract
 
-object MainContract {
+object NewsCategoryContract {
 
   interface Presenter : BasePresenterActivity<View> {
 

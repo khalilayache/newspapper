@@ -1,17 +1,17 @@
 package com.khalilayache.newspapper.presenter
 
 import android.os.Bundle
-import com.khalilayache.newspapper.contract.MainContract
+import com.khalilayache.newspapper.contract.NewsCategoryContract
 import com.khalilayache.newspapper.network.api.NewsCategoryApi
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(private val api: NewsCategoryApi) : MainContract.Presenter {
+class NewsCategoryPresenter @Inject constructor(private val api: NewsCategoryApi) : NewsCategoryContract.Presenter {
 
-  private lateinit var view: MainContract.View
+  private lateinit var view: NewsCategoryContract.View
   private lateinit var categories: ArrayList<String>
 
 
-  override fun bindView(view: MainContract.View) {
+  override fun bindView(view: NewsCategoryContract.View) {
     this.view = view
   }
 
