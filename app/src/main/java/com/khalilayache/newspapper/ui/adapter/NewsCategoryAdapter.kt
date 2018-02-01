@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import com.khalilayache.newspapper.R
 import kotlinx.android.synthetic.main.news_category_item.view.category_text
 
-class NewsCategoryAdapter(private val categoryList: ArrayList<String>) : RecyclerView.Adapter<NewsCategoryAdapter.NewsCategoryHolder>() {
+class NewsCategoryAdapter(private val categoryList: ArrayList<String>,
+    private val categoryClick: CategoryClick) : RecyclerView.Adapter<NewsCategoryAdapter.NewsCategoryHolder>() {
 
   override fun onBindViewHolder(holder: NewsCategoryHolder, position: Int) {
     val category = categoryList[position]
 
     holder.itemView.category_text.text = category
+    holder.itemView.setOnClickListener {
+      categoryClick.categoryClick(category)
+    }
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsCategoryHolder {
@@ -24,4 +28,8 @@ class NewsCategoryAdapter(private val categoryList: ArrayList<String>) : Recycle
   override fun getItemCount() = categoryList.size
 
   class NewsCategoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+  interface CategoryClick {
+    fun categoryClick(category: String)
+  }
 }

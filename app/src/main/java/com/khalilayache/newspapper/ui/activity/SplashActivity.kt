@@ -35,7 +35,7 @@ class SplashActivity : BaseActivity(), SplashContract.View {
 
   override fun navigateToMainScreen() {
     Handler().postDelayed({
-      startActivity(MainActivity.createIntentToMainActivity(this@SplashActivity))
+      startActivity(NewsCategoryActivity.createIntentToMainActivity(this@SplashActivity))
       finish()
     }, SPLASH_DELAY)
   }
