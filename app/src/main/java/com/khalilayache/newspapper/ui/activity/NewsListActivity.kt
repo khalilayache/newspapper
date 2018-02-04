@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.Toast
 import com.khalilayache.newspapper.R
 import com.khalilayache.newspapper.contract.NewsListContract
 import com.khalilayache.newspapper.di.component.DaggerNewsListComponent
@@ -98,6 +97,6 @@ class NewsListActivity : BaseActivity(), NewsListContract.View, NewsListAdapter.
   }
 
   override fun articleClick(articleUrl: String) {
-    Toast.makeText(this@NewsListActivity, articleUrl, Toast.LENGTH_SHORT).show()
+    startActivity(WebViewActivity.getIntent(this@NewsListActivity, articleUrl))
   }
 }
