@@ -37,10 +37,24 @@ class NewsListPresenter @Inject constructor(private val newsApiService: Api.News
 
     view.showLoading()
     when {
-      articles != null -> articlesReady(articles)
+      articles != null -> removeInvalidsArticles(articles)
       category != null -> loadNewsByCategory(category)
       else -> Log.e("NewsERROR", "Deu merda no init() do NewsListPresenter")
     }
+  }
+
+  private fun removeInvalidsArticles(articles: List<Article>?) {
+    val newArticleList: ArrayList<Article> = ArrayList()
+
+    articles?.let {
+      it.filterTo(newArticleList) {
+        (it.urlToImage.isNullOrEmpty()
+            or it.url.isNullOrEmpty()
+            or it.title.isNullOrEmpty())
+      }
+    }
+
+    articlesReady(newArticleList.toList())
   }
 
   private fun articlesReady(articles: List<Article>?) {
@@ -68,7 +82,7 @@ class NewsListPresenter @Inject constructor(private val newsApiService: Api.News
   }
 
   private fun onReceiveResponse(response: ResponseNewsApi) {
-    if(response.status != "ok") {
+    if (response.status != "ok") {
       Log.e("NewsERROR", "Deu merda na API")
       return
     }
