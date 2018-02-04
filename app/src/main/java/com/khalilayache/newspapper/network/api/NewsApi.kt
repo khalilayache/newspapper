@@ -8,24 +8,31 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-interface NewsApi {
+object Api {
 
-  @GET("v2/everything")
-  fun getNewsByCategory(
-      @Query("q") query: String?,
-      @Query("apiKey") apiKey: String
-  ): Call<ResponseNewsApi>
+  const val apiKey = "ebbe66e577454b8b9523d13f0dec97ef"
+  const val sources = "google-news-br"
+
+  interface NewsApi {
+
+    @GET("v2/everything")
+    fun getNewsByCategory(
+        @Query("q") query: String?,
+        //@Query("sources") source: String?,
+        @Query("apiKey") apiKey: String
+    ): Call<ResponseNewsApi>
 
 
- companion object {
-   const val BASE_URL = "https://newsapi.org"
-   fun create() : NewsApi {
-     val retrofit  = Retrofit.Builder()
-         .addConverterFactory(GsonConverterFactory.create())
-         .baseUrl(BASE_URL)
-         .build()
+    companion object {
+      private const val BASE_URL = "https://newsapi.org"
+      fun create(): NewsApi {
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
 
-     return retrofit.create(NewsApi::class.java)
-   }
- }
+        return retrofit.create(NewsApi::class.java)
+      }
+    }
+  }
 }

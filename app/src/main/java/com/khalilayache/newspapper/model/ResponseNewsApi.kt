@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class ResponseNewsApi(
     val totalResults: Int,
-    val articles: ArrayList<Article>? = null,
+    val articles: List<Article>? = null,
     val status: String? = null) : Parcelable
 
 @SuppressLint("ParcelCreator")

@@ -2,6 +2,7 @@ package com.khalilayache.newspapper.extension
 
 import android.os.Build
 import android.support.v7.widget.Toolbar
+import android.view.View
 import android.widget.TextView
 
 fun TextView.setColorText(color: Int) {
@@ -20,5 +21,17 @@ fun Toolbar.setColorText(color: Int) {
     @Suppress("DEPRECATION")
     this.setTitleTextColor(resources.getColor(color))
   }
+}
+
+fun View.visible() {
+  this.visibility = View.VISIBLE
+}
+
+fun View.invisible() {
+  this.visibility = View.INVISIBLE
+}
+
+fun View.gone() {
+  this.visibility = View.GONE
 }
 

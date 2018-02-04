@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/tools"
+              xmlns:card_view="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              app:ignore="NamespaceTypo">
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/card_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:layout_margin="8dp"
+      android:elevation="3dp"
+      card_view:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <ImageView
+          android:id="@+id/article_image"
+          android:layout_width="match_parent"
+          android:layout_height="160dp"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:clickable="true"
+          android:src="@drawable/newspaper_splash"
+          app:scrCompat="@drawable/newspaper_splash"
+          android:focusable="true"
+          android:scaleType="fitXY"/>
+
+      <TextView
+          android:id="@+id/article_title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/article_image"
+          android:paddingLeft="8dp"
+          android:paddingRight="8dp"
+          android:ellipsize="end"
+          android:maxLines="2"
+          android:paddingTop="12dp"
+          app:text="Titulo"
+          android:textColor="@android:color/black"
+          android:textSize="16sp"/>
+
+      <TextView
+          android:id="@+id/article_description"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/article_title"
+          android:layout_marginBottom="8dp"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:paddingBottom="8dp"
+          android:paddingLeft="8dp"
+          android:paddingRight="8dp"
+          android:textSize="12sp"
+          app:text="Descriçao"/>
+
+    </RelativeLayout>
+
+  </android.support.v7.widget.CardView>
+
+</LinearLayout>
