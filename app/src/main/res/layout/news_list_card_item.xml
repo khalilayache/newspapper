@@ -10,7 +10,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_gravity="center"
-      android:layout_margin="8dp"
+      android:layout_margin="6dp"
       android:elevation="3dp"
       card_view:cardCornerRadius="5dp">
 
@@ -23,10 +23,9 @@
           android:id="@+id/article_image"
           android:layout_width="match_parent"
           android:layout_height="160dp"
-          android:background="?attr/selectableItemBackgroundBorderless"
           android:src="@drawable/newspaper_splash"
           app:scrCompat="@drawable/newspaper_splash"
-          android:scaleType="fitXY"/>
+          android:scaleType="centerCrop"/>
 
       <TextView
           android:id="@+id/article_title"
@@ -47,7 +46,6 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@id/article_title"
-          android:layout_marginBottom="8dp"
           android:ellipsize="end"
           android:maxLines="1"
           android:paddingLeft="8dp"

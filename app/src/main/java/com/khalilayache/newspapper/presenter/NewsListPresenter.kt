@@ -54,8 +54,8 @@ class NewsListPresenter @Inject constructor(private val newsApiService: Api.News
     articles?.let {
       it.filterTo(newArticleList) {
         (!it.urlToImage.isNullOrEmpty()
-            or !it.url.isNullOrEmpty()
-            or !it.title.isNullOrEmpty())
+            and !it.url.isNullOrEmpty()
+            and !it.title.isNullOrEmpty())
       }
     }
 
