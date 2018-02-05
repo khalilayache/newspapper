@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.khalilayache.newspapper.R
+import com.khalilayache.newspapper.extension.gone
 import com.khalilayache.newspapper.model.Article
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_list_card_item.view.article_description
@@ -21,7 +22,12 @@ class NewsListAdapter(private val articleClick: ArticleClick,
     val article = articleList[position]
 
     holder.itemView.article_title.text = article.title
-    holder.itemView.article_description.text = article.description
+
+    if (article.description.isNullOrEmpty()) {
+      holder.itemView.article_description.gone()
+    } else {
+      holder.itemView.article_description.text = article.description
+    }
 
     holder.itemView.setOnClickListener {
       article.url?.let {

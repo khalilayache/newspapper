@@ -30,6 +30,11 @@ class NewsListPresenter @Inject constructor(private val newsApiService: Api.News
       extras?.getString(NewsListContract.CATEGORY_ID)
     }
 
+    if (savedInstanceState != null) {
+      val arrayList = savedInstanceState[NewsListContract.ARTICLES_ID] as ArrayList<Article>
+      articles = arrayList.toList()
+    }
+
     init(articles, category)
   }
 
@@ -48,9 +53,9 @@ class NewsListPresenter @Inject constructor(private val newsApiService: Api.News
 
     articles?.let {
       it.filterTo(newArticleList) {
-        (it.urlToImage.isNullOrEmpty()
-            or it.url.isNullOrEmpty()
-            or it.title.isNullOrEmpty())
+        (!it.urlToImage.isNullOrEmpty()
+            or !it.url.isNullOrEmpty()
+            or !it.title.isNullOrEmpty())
       }
     }
 
@@ -61,6 +66,7 @@ class NewsListPresenter @Inject constructor(private val newsApiService: Api.News
     articles?.let {
       view.setNewsList(it)
     }
+    view.hideLoading()
   }
 
   override fun loadNewsByCategory(category: String) {
@@ -89,8 +95,7 @@ class NewsListPresenter @Inject constructor(private val newsApiService: Api.News
 
     articles = response.articles
 
-    articlesReady(response.articles)
-    view.hideLoading()
+    removeInvalidsArticles(response.articles)
   }
 
   override fun onSaveInstanceState(bundle: Bundle?) {

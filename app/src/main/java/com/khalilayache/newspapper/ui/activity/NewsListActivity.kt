@@ -24,6 +24,8 @@ class NewsListActivity : BaseActivity(), NewsListContract.View, NewsListAdapter.
 
   private val newsListAdapter by lazy { NewsListAdapter(this@NewsListActivity, this@NewsListActivity) }
 
+  private var articleList: List<Article>? = null
+
   @Inject
   lateinit var presenter: NewsListContract.Presenter
 
@@ -39,7 +41,7 @@ class NewsListActivity : BaseActivity(), NewsListContract.View, NewsListAdapter.
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+   super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_news_list)
 
     initInjection()
@@ -86,6 +88,7 @@ class NewsListActivity : BaseActivity(), NewsListContract.View, NewsListAdapter.
   override fun setNewsList(newsList: List<Article>) {
     newsListAdapter.articleList = newsList
     newsListAdapter.notifyDataSetChanged()
+    articleList = newsList
   }
 
   override fun showLoading() {
@@ -98,5 +101,16 @@ class NewsListActivity : BaseActivity(), NewsListContract.View, NewsListAdapter.
 
   override fun articleClick(articleUrl: String) {
     startActivity(WebViewActivity.getIntent(this@NewsListActivity, articleUrl))
+  }
+
+  override fun onSaveInstanceState(outState: Bundle?) {
+    super.onSaveInstanceState(outState)
+    val arrayList: ArrayList<Article> = ArrayList()
+
+    articleList?.let {
+      arrayList.addAll(it)
+    outState?.putParcelableArrayList(NewsListContract.ARTICLES_ID, arrayList)
+    }
+
   }
 }

@@ -20,18 +20,10 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <activity android:name=".ui.activity.NewsCategoryActivity"
-              android:screenOrientation="portrait"
-              android:configChanges="orientation|keyboardHidden"/>
-    <activity android:name=".ui.base.BaseActivity"
-              android:screenOrientation="portrait"
-              android:configChanges="orientation|keyboardHidden"/>
-    <activity android:name=".ui.activity.NewsListActivity"
-              android:screenOrientation="portrait"
-              android:configChanges="orientation|keyboardHidden"/>
-    <activity android:name=".ui.activity.WebViewActivity"
-              android:screenOrientation="portrait"
-              android:configChanges="orientation|keyboardHidden"/>
+    <activity android:name=".ui.activity.NewsCategoryActivity"/>
+    <activity android:name=".ui.base.BaseActivity"/>
+    <activity android:name=".ui.activity.NewsListActivity"/>
+    <activity android:name=".ui.activity.WebViewActivity"/>
   </application>
 
 </manifest>

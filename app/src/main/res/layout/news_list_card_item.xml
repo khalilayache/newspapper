@@ -16,17 +16,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp">
 
       <ImageView
           android:id="@+id/article_image"
           android:layout_width="match_parent"
           android:layout_height="160dp"
           android:background="?attr/selectableItemBackgroundBorderless"
-          android:clickable="true"
           android:src="@drawable/newspaper_splash"
           app:scrCompat="@drawable/newspaper_splash"
-          android:focusable="true"
           android:scaleType="fitXY"/>
 
       <TextView
@@ -51,7 +50,6 @@
           android:layout_marginBottom="8dp"
           android:ellipsize="end"
           android:maxLines="1"
-          android:paddingBottom="8dp"
           android:paddingLeft="8dp"
           android:paddingRight="8dp"
           android:textSize="12sp"
